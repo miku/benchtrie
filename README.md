@@ -1,6 +1,6 @@
 # benchtrie
 
-Benchmarking prefix lookups, e.g. given a number of hostnames like
+Benchmarking name lookups, e.g. given a number of hostnames like
 
 ```shell
 ads.0.xvlbz.com
