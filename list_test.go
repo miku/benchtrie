@@ -20,7 +20,7 @@ func BenchmarkLookupSlice(b *testing.B) {
 	}
 
 	for _, bc := range cases {
-		name := fmt.Sprintf("Lookup (slice) within %d hosts", bc.length)
+		name := fmt.Sprintf("Lookup-slice-%d", bc.length)
 		hosts := GenerateHosts(bc.length)
 		key := hosts[rand.Intn(len(hosts))]
 

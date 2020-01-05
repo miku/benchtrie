@@ -21,7 +21,7 @@ func BenchmarkTreeInsert(b *testing.B) {
 	}
 
 	for _, bc := range cases {
-		name := fmt.Sprintf("Insert (tree) within %d hosts", bc.length)
+		name := fmt.Sprintf("Insert-tree-%d", bc.length)
 		hosts := GenerateHosts(bc.length)
 		tree := NewTree()
 		b.Run(name, func(b *testing.B) {
@@ -46,7 +46,7 @@ func BenchmarkTreeLookup(b *testing.B) {
 	}
 
 	for _, bc := range cases {
-		name := fmt.Sprintf("Lookup (tree) within %d hosts", bc.length)
+		name := fmt.Sprintf("Lookup-tree-%d", bc.length)
 		hosts := GenerateHosts(bc.length)
 		tree := NewTree()
 		for _, s := range hosts {

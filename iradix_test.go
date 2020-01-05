@@ -22,7 +22,7 @@ func BenchmarkImmutableRadixInsert(b *testing.B) {
 	}
 
 	for _, bc := range cases {
-		name := fmt.Sprintf("Insert (iradix) within %d hosts", bc.length)
+		name := fmt.Sprintf("Insert-iradix-%d", bc.length)
 		hosts := GenerateHosts(bc.length)
 		r := iradix.New()
 		b.Run(name, func(b *testing.B) {
@@ -47,7 +47,7 @@ func BenchmarkImmutableRadixLookup(b *testing.B) {
 	}
 
 	for _, bc := range cases {
-		name := fmt.Sprintf("Lookup (iradix) within %d hosts", bc.length)
+		name := fmt.Sprintf("Lookup-iradix-%d", bc.length)
 
 		hosts := GenerateHosts(bc.length)
 		r := iradix.New()

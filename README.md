@@ -24,7 +24,7 @@ How long does a name lookup take with different data structures?
 Summary:
 
 The *tree* has fastest insert time, *iradix* seems slightly faster on lookup,
-slices are ok for up to 100 items, maybe.
+*slices* are ok for up to 100 items, maybe.
 
 ## Details
 
@@ -33,39 +33,41 @@ $ go test -bench .
 goos: linux
 goarch: amd64
 pkg: github.com/miku/benchtrie
-BenchmarkTreeInsert/Insert_(tree)_within_1_hosts-8              1000000000               0.000009 ns/op
-BenchmarkTreeInsert/Insert_(tree)_within_10_hosts-8             1000000000               0.000013 ns/op
-BenchmarkTreeInsert/Insert_(tree)_within_100_hosts-8            1000000000               0.000080 ns/op
-BenchmarkTreeInsert/Insert_(tree)_within_1000_hosts-8           1000000000               0.000767 ns/op
-BenchmarkTreeInsert/Insert_(tree)_within_10000_hosts-8          1000000000               0.00396 ns/op
-BenchmarkTreeInsert/Insert_(tree)_within_100000_hosts-8         1000000000               0.0427 ns/op
-BenchmarkTreeInsert/Insert_(tree)_within_1000000_hosts-8               1        2370229227 ns/op
-BenchmarkTreeLookup/Lookup_(tree)_within_1_hosts-8              1000000000               0.000003 ns/op
-BenchmarkTreeLookup/Lookup_(tree)_within_10_hosts-8             1000000000               0.000003 ns/op
-BenchmarkTreeLookup/Lookup_(tree)_within_100_hosts-8            1000000000               0.000002 ns/op
-BenchmarkTreeLookup/Lookup_(tree)_within_1000_hosts-8           1000000000               0.000003 ns/op
-BenchmarkTreeLookup/Lookup_(tree)_within_10000_hosts-8          1000000000               0.000005 ns/op
-BenchmarkTreeLookup/Lookup_(tree)_within_100000_hosts-8         1000000000               0.000007 ns/op
-BenchmarkTreeLookup/Lookup_(tree)_within_1000000_hosts-8        1000000000               0.000008 ns/op
-BenchmarkImmutableRadixInsert/Insert_(iradix)_within_1_hosts-8          1000000000               0.000023 ns/op
-BenchmarkImmutableRadixInsert/Insert_(iradix)_within_10_hosts-8         1000000000               0.000068 ns/op
-BenchmarkImmutableRadixInsert/Insert_(iradix)_within_100_hosts-8        1000000000               0.000614 ns/op
-BenchmarkImmutableRadixInsert/Insert_(iradix)_within_1000_hosts-8       1000000000               0.00707 ns/op
-BenchmarkImmutableRadixInsert/Insert_(iradix)_within_10000_hosts-8      1000000000               0.132 ns/op
-BenchmarkImmutableRadixInsert/Insert_(iradix)_within_100000_hosts-8     1000000000               0.584 ns/op
-BenchmarkImmutableRadixInsert/Insert_(iradix)_within_1000000_hosts-8           1        6009170489 ns/op
-BenchmarkImmutableRadixLookup/Lookup_(iradix)_within_1_hosts-8          1000000000               0.000000 ns/op
-BenchmarkImmutableRadixLookup/Lookup_(iradix)_within_10_hosts-8         1000000000               0.000001 ns/op
-BenchmarkImmutableRadixLookup/Lookup_(iradix)_within_100_hosts-8        1000000000               0.000001 ns/op
-BenchmarkImmutableRadixLookup/Lookup_(iradix)_within_1000_hosts-8       1000000000               0.000001 ns/op
-BenchmarkImmutableRadixLookup/Lookup_(iradix)_within_10000_hosts-8      1000000000               0.000001 ns/op
-BenchmarkImmutableRadixLookup/Lookup_(iradix)_within_100000_hosts-8     1000000000               0.000004 ns/op
-BenchmarkImmutableRadixLookup/Lookup_(iradix)_within_1000000_hosts-8    1000000000               0.000006 ns/op
-BenchmarkLookupSlice/Lookup_(slice)_within_1_hosts-8                    1000000000               0.000000 ns/op
-BenchmarkLookupSlice/Lookup_(slice)_within_10_hosts-8                   1000000000               0.000000 ns/op
-BenchmarkLookupSlice/Lookup_(slice)_within_100_hosts-8                  1000000000               0.000001 ns/op
-BenchmarkLookupSlice/Lookup_(slice)_within_1000_hosts-8                 1000000000               0.000005 ns/op
-BenchmarkLookupSlice/Lookup_(slice)_within_10000_hosts-8                1000000000               0.000044 ns/op
-BenchmarkLookupSlice/Lookup_(slice)_within_100000_hosts-8               1000000000               0.000660 ns/op
-BenchmarkLookupSlice/Lookup_(slice)_within_1000000_hosts-8              1000000000               0.00565 ns/op
+BenchmarkTreeInsert/Insert-tree-1-8             1000000000               0.000007 ns/op
+BenchmarkTreeInsert/Insert-tree-10-8            1000000000               0.000015 ns/op
+BenchmarkTreeInsert/Insert-tree-100-8           1000000000               0.000140 ns/op
+BenchmarkTreeInsert/Insert-tree-1000-8          1000000000               0.000830 ns/op
+BenchmarkTreeInsert/Insert-tree-10000-8         1000000000               0.00807 ns/op
+BenchmarkTreeInsert/Insert-tree-100000-8        1000000000               0.0476 ns/op
+BenchmarkTreeInsert/Insert-tree-1000000-8              1        2474794588 ns/op
+BenchmarkTreeLookup/Lookup-tree-1-8             1000000000               0.000003 ns/op
+BenchmarkTreeLookup/Lookup-tree-10-8            1000000000               0.000003 ns/op
+BenchmarkTreeLookup/Lookup-tree-100-8           1000000000               0.000002 ns/op
+BenchmarkTreeLookup/Lookup-tree-1000-8          1000000000               0.000003 ns/op
+BenchmarkTreeLookup/Lookup-tree-10000-8         1000000000               0.000006 ns/op
+BenchmarkTreeLookup/Lookup-tree-100000-8        1000000000               0.000007 ns/op
+BenchmarkTreeLookup/Lookup-tree-1000000-8       1000000000               0.000007 ns/op
+BenchmarkImmutableRadixInsert/Insert-iradix-1-8                 1000000000               0.000008 ns/op
+BenchmarkImmutableRadixInsert/Insert-iradix-10-8                1000000000               0.000027 ns/op
+BenchmarkImmutableRadixInsert/Insert-iradix-100-8               1000000000               0.000255 ns/op
+BenchmarkImmutableRadixInsert/Insert-iradix-1000-8              1000000000               0.00371 ns/op
+BenchmarkImmutableRadixInsert/Insert-iradix-10000-8             1000000000               0.127 ns/op
+BenchmarkImmutableRadixInsert/Insert-iradix-100000-8            1000000000               0.580 ns/op
+BenchmarkImmutableRadixInsert/Insert-iradix-1000000-8                  1        5890982774 ns/op
+BenchmarkImmutableRadixLookup/Lookup-iradix-1-8                 1000000000               0.000001 ns/op
+BenchmarkImmutableRadixLookup/Lookup-iradix-10-8                1000000000               0.000001 ns/op
+BenchmarkImmutableRadixLookup/Lookup-iradix-100-8               1000000000               0.000001 ns/op
+BenchmarkImmutableRadixLookup/Lookup-iradix-1000-8              1000000000               0.000001 ns/op
+BenchmarkImmutableRadixLookup/Lookup-iradix-10000-8             1000000000               0.000001 ns/op
+BenchmarkImmutableRadixLookup/Lookup-iradix-100000-8            1000000000               0.000004 ns/op
+BenchmarkImmutableRadixLookup/Lookup-iradix-1000000-8           1000000000               0.000006 ns/op
+BenchmarkLookupSlice/Lookup-slice-1-8                           1000000000               0.000000 ns/op
+BenchmarkLookupSlice/Lookup-slice-10-8                          1000000000               0.000000 ns/op
+BenchmarkLookupSlice/Lookup-slice-100-8                         1000000000               0.000001 ns/op
+BenchmarkLookupSlice/Lookup-slice-1000-8                        1000000000               0.000005 ns/op
+BenchmarkLookupSlice/Lookup-slice-10000-8                       1000000000               0.000043 ns/op
+BenchmarkLookupSlice/Lookup-slice-100000-8                      1000000000               0.00136 ns/op
+BenchmarkLookupSlice/Lookup-slice-1000000-8                     1000000000               0.00583 ns/op
+PASS
+ok      github.com/miku/benchtrie       53.498s
 ```
