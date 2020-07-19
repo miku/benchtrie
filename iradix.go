@@ -20,6 +20,10 @@ func RandString(length int) string {
 	return StringWithCharset(length, charset)
 }
 
+func RandNum(length int) string {
+    return StringWithCharset(length, numset)
+}
+
 // GenerateHosts returns a number of random hostnames. The TLD might be short,
 // so to increase duplicate TLDs, which is more common.
 func GenerateHosts(size int) (result []string) {
@@ -31,8 +35,8 @@ func GenerateHosts(size int) (result []string) {
 
 func GenerateIPv4Addr(size int) (result []string) {
     for i := 0; i < size; i++ {
-        result = append(result, fmt.Sprintf("%s.%s.%s.%s", RandString(3),
-                        RandString(3), RandString(3), RandString(3)))
+        result = append(result, fmt.Sprintf("%s.%s.%s.%s", RandNum(3),
+                        RandNum(3), RandNum(3), RandNum(3)))
     }
     return
 }
