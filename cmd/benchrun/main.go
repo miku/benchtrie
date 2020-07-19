@@ -17,6 +17,10 @@ func main() {
 	// 	"git.klingt.net",
 	// 	"foo.bar.cloudfront.com",
 	// }
+    // OR
+    // hosts := []string{
+    //  "192.168.123.255"
+    //hosts := benchtrie.GenerateIPv4Addr(100)
 	hosts := benchtrie.GenerateHosts(1000)
 	r := iradix.New()
 	for _, host := range hosts {
